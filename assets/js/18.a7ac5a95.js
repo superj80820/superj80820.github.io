@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[18],{364:function(t,e,n){"use strict";n.r(e);var s=n(42),l=Object(s.a)({},(function(){var t=this.$createElement,e=this._self._c||t;return e("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[e("p",[this._v("我對一些科技的筆記 歡迎一起討論")])])}),[],!1,null,null,null);e.default=l.exports}}]);

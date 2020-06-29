@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>aysnc await 學習筆記 | 髒桶子</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="description" content="有趣的東西 真香">
+    <link rel="preload" href="/assets/css/0.styles.4e8df4b9.css" as="style"><link rel="preload" href="/assets/js/app.b651550d.js" as="script"><link rel="preload" href="/assets/js/2.4d3667ca.js" as="script"><link rel="preload" href="/assets/js/19.e142b7d3.js" as="script"><link rel="preload" href="/assets/js/6.861e33a3.js" as="script"><link rel="preload" href="/assets/js/7.8fd2f7c0.js" as="script"><link rel="prefetch" href="/assets/js/10.1190f801.js"><link rel="prefetch" href="/assets/js/11.4b6e1658.js"><link rel="prefetch" href="/assets/js/12.da344f1d.js"><link rel="prefetch" href="/assets/js/13.8d1f1222.js"><link rel="prefetch" href="/assets/js/14.9d662c62.js"><link rel="prefetch" href="/assets/js/15.6fe42cb7.js"><link rel="prefetch" href="/assets/js/16.eb36f962.js"><link rel="prefetch" href="/assets/js/17.2ca1555e.js"><link rel="prefetch" href="/assets/js/18.a7ac5a95.js"><link rel="prefetch" href="/assets/js/20.01d0789d.js"><link rel="prefetch" href="/assets/js/21.63bc41e3.js"><link rel="prefetch" href="/assets/js/22.56eb57b4.js"><link rel="prefetch" href="/assets/js/3.3d5ea4f1.js"><link rel="prefetch" href="/assets/js/4.fb75adfe.js"><link rel="prefetch" href="/assets/js/5.6a86b32f.js"><link rel="prefetch" href="/assets/js/8.666e51b4.js"><link rel="prefetch" href="/assets/js/9.f4becb18.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e8df4b9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">髒桶子</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/designs/" class="nav-link">
+  設計教學
+</a></div><div class="nav-item"><a href="/notes/" class="nav-link router-link-active">
+  學習筆記
+</a></div><div class="nav-item"><a href="/labs/" class="nav-link">
+  實驗室
+</a></div><div class="nav-item"><a href="https://www.cakeresume.com/superj80820" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  關於我
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/superj80820" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/designs/" class="nav-link">
+  設計教學
+</a></div><div class="nav-item"><a href="/notes/" class="nav-link router-link-active">
+  學習筆記
+</a></div><div class="nav-item"><a href="/labs/" class="nav-link">
+  實驗室
+</a></div><div class="nav-item"><a href="https://www.cakeresume.com/superj80820" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  關於我
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/superj80820" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>設計教學</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/designs/" class="sidebar-link">小前言</a></li><li><a href="/designs/AR用AR.js做一個讓另對方 喔喔喔喔 的小卡片吧.html" class="sidebar-link">AR用AR.js做一個讓另對方 喔喔喔喔! 的小卡片吧!</a></li><li><a href="/designs/Line bot一定要對談的介面嗎 對談介面的價值在哪裡.html" class="sidebar-link">Line bot一定要對談的介面嗎 對談介面的價值在哪裡?</a></li><li><a href="/designs/Web App 筆記系列-利用ionic+vuejs+line做出一個Web App-Adobe XD, Figma, InVision等等UIUX軟體的選擇.html" class="sidebar-link">Web App 筆記系列-利用ionic+vuejs+line做出一個Web App-Adobe XD, Figma, InVision等等UI/UX軟體的選擇</a></li><li><a href="/designs/為你的line群加一個任務小幫手吧.html" class="sidebar-link">為你的line群加一個任務小幫手吧!</a></li><li><a href="/designs/讓手機像Switch一樣玩3A級大作 使用雲端遊戲串流打造自己的Google Stadia.html" class="sidebar-link">讓手機像Switch一樣玩3A級大作 使用雲端遊戲串流打造自己的Google Stadia</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>學習筆記</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/notes/" aria-current="page" class="sidebar-link">小前言</a></li><li><a href="/notes/aysnc await 學習筆記.html" class="active sidebar-link">aysnc await 學習筆記</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#何謂非同步" class="sidebar-link">何謂非同步?</a></li><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#非同步怎麼做到的" class="sidebar-link">非同步怎麼做到的?</a></li><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#那在python中怎麼辦到" class="sidebar-link">那在python中怎麼辦到?</a></li><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#他的原理是甚麼？" class="sidebar-link">他的原理是甚麼？</a></li><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#對公司有甚麼好處？" class="sidebar-link">對公司有甚麼好處？</a></li><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#其他有趣的文章" class="sidebar-link">其他有趣的文章</a></li><li class="sidebar-sub-header"><a href="/notes/aysnc await 學習筆記.html#其他參考" class="sidebar-link">其他參考</a></li></ul></li><li><a href="/notes/drone 與其他CICD的比較.html" class="sidebar-link">drone 與其他CI/CD的比較</a></li><li><a href="/notes/壓力測試、負載測試、效能測試的比較與差異.html" class="sidebar-link">壓力測試、負載測試、效能測試的比較與差異</a></li><li><a href="/notes/第一次實習的心得與成長.html" class="sidebar-link">第一次實習的心得與成長</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>實驗室</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/labs/" class="sidebar-link">小前言</a></li><li><a href="/labs/youtube自訂字幕.html" class="sidebar-link">youtube自訂字幕</a></li><li><a href="/labs/顯示live2d.html" class="sidebar-link">顯示live2d</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="何謂非同步"><a href="#何謂非同步" class="header-anchor">#</a> 何謂非同步?</h2> <p>最近從python一路寫到javascript
+會對javascript的&quot;非同步&quot;感到非常頭大
+舉個例子
+我們現在在<a href="https://jsbin.com/hayifeyewa/1/edit?js,console" target="_blank" rel="noopener noreferrer">Jsbin<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+貼下以下程式碼</p> <div class="language- extra-class"><pre class="language-text"><code>console.log('hi')
+fetch('hayifeyewa').then(done =&gt; console.log(&quot;done&quot;))
+console.log('bye')
+</code></pre></div><p>我們會印出</p> <div class="language- extra-class"><pre class="language-text"><code>hi
+bye
+done
+</code></pre></div><p>怎麼會這樣 以python的觀念來看 因該是</p> <div class="language- extra-class"><pre class="language-text"><code>hi
+done
+bye
+</code></pre></div><p>最大原因是python是個同步的語言
+意思是</p> <blockquote><p>在對任一行程式進行請求的時候
+python都等到程式回應之後在進行下一行程式
+即為IO阻塞式的語言</p></blockquote> <p>為甚麼要稱作阻塞式 是因為當python在進行這個requests請求時
+python是停住在等待requests回應後 再進行下一步
+讓程式有順序的跑 邏輯也比較直覺
+那是不是代表同步的語言就是最好的呢?</p> <blockquote><p>要看使用場合決定</p></blockquote> <p>如果js是同步語言會造成以下結果
+{%youtube p59z-tAoxyA %}
+js只要一有&quot;長時間&quot;的請求 js就會卡在那 甚麼事都不能做
+你試想 假設我今天在gmail傳送了一封信件(POST)
+在傳送過程中我的頁面都是當掉的 那使用體驗會有多差</p> <h3 id="參考"><a href="#參考" class="header-anchor">#</a> 參考</h3> <p><a href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html" target="_blank" rel="noopener noreferrer">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="非同步怎麼做到的"><a href="#非同步怎麼做到的" class="header-anchor">#</a> 非同步怎麼做到的?</h2> <p>我們現在瞭解了非同步就是</p> <blockquote><p>程序不必等待元件的I/O 即繼續執行
+當I/O元件回應的時候 即會觸發當初給他定義的function</p></blockquote> <p>講得有點饒舌 我們用以下的影片來說明
+{%youtube N0Au8yc5IOw %}
+<a href="http://latentflip.com/loupe/?code=Y29uc29sZS5sb2coJ2hpJykKCnNldFRpbWVvdXQoZnVuY3Rpb24gKCkgewogIGNvbnNvbGUubG9nKCd0aGVyZScpCn0sIDUwMDApCgpjb25zb2xlLmxvZygnSlNDb25mRVUnKQ%3D%3D!!!" target="_blank" rel="noopener noreferrer">實作連結<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+圖中的區域分別是</p> <ul><li>stack: js執行的地方</li> <li>webapis: 瀏覽器提供的很多I/O api 有requests相關、計時器相關的</li> <li>task queue: 當webapis的I/O操作完畢開始回應時
+會將當初準備好的js function建立在task queue</li> <li>event loop: 用來監控stack與task queue的模塊
+只要stack是空的 就把task queue的js function丟到stack裡讓js執行</li></ul> <p>首先 我們的瀏覽器&quot;並不是只有js在上面運作&quot;
+js只是上面的一個引擎 其他還有requests引擎 計時的引擎等等
+舉個例子 js在使用計時器引擎時 只是跟對方說</p> <blockquote><p>欸欸 這個callback function給你
+5秒後記得回來告訴我要執行這個callback啊</p></blockquote> <p>過了5秒後 計時器引擎就會把這個callback生在task queue裡面
+然後event loop模塊趁js執行的空檔把callback交給js讓他執行(在stack裡執行)</p> <h3 id="參考-2"><a href="#參考-2" class="header-anchor">#</a> 參考</h3> <p><a href="https://dotblogs.com.tw/kinanson/2018/03/28/075558" target="_blank" rel="noopener noreferrer">[C#]Multiple thread和非同步的差異，並正確自訂非同步的方式<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="那在python中怎麼辦到"><a href="#那在python中怎麼辦到" class="header-anchor">#</a> 那在python中怎麼辦到?</h2> <p>python 需要一個模塊 可以提供各種requests相關、計時器相關的I/O元件api
+並且此模塊也擁有 event loop的功能 因此python在3.5提供了asyncio
+舉個例子 我們對google要10次GET &gt;&gt;&gt; <a href="https://repl.it/repls/InformalCraftyWifi" target="_blank" rel="noopener noreferrer">demo<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>import requests
+import time
+import asyncio
+
+url = 'https://www.google.com.tw/'
+loop = asyncio.get_event_loop()
+
+start_time = time.time()
+
+async def send_req(url):
+    t = time.time()
+    print(&quot;Send a request at&quot;,t-start_time,&quot;seconds.&quot;)
+
+    res = await loop.run_in_executor(None,requests.get,url)
+
+    t = time.time()
+    print(&quot;Receive a response at&quot;,t-start_time,&quot;seconds.&quot;)
+
+tasks = []
+
+for i in range(10):
+    task = loop.create_task(send_req(url))
+    tasks.append(task)
+
+loop.run_until_complete(asyncio.wait(tasks))
+</code></pre></div><p>他的順序是這樣的</p> <ol><li>asyncio 創造一個event loop模塊</li> <li>python將send_req這10個非同步function丟入event loop給他監控</li> <li>event loop啟動 python開始執行event loop 的function</li> <li>遇到await就把後方帶的requests交給I/O request 元件 讓他執行</li> <li>不理他繼續跑其他function</li> <li>I/O requests元件執行完畢返回request 所要return的值</li> <li>繼續執行下方程式碼
+<img src="https://i.imgur.com/D704LUx.png" alt=""></li></ol> <h3 id="參考-3"><a href="#參考-3" class="header-anchor">#</a> 參考</h3> <p><a href="https://ithelp.ithome.com.tw/articles/10199385" target="_blank" rel="noopener noreferrer">python的asyncio模組(一)：異步執行的好處<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://www.jianshu.com/p/6a37a6aee879" target="_blank" rel="noopener noreferrer">高性能IO模型（摘选）<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="他的原理是甚麼？"><a href="#他的原理是甚麼？" class="header-anchor">#</a> 他的原理是甚麼？</h2> <p>首先 我們要先瞭解python的yiedl <a href="https://blog.csdn.net/soonfly/article/details/78361819" target="_blank" rel="noopener noreferrer">ref<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <blockquote><p>yield就是讓你的程式碼可以中途中斷 將執行敘返回</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>def tset():
+    return [&quot;a&quot; * 10000000]
+
+def test2(n):
+    count = 0
+    while &lt; n:
+        yield count
+        count += 1
+</code></pre></div><blockquote><p>而 &quot;yield from&quot; iterable本质上等于for item in iterable: yield item的缩写版</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>def g1():     
+     yield  range(5)
+def g2():
+     yield  from range(5)
+
+it1 = g1()
+it2 = g2()
+for x in it1:
+    print(x)
+
+for x in it2:
+    print(x)
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>def g1():
+  for item in range(5):
+    yield  item
+def g2():
+  yield from range(5)
+
+it1 = g1()
+it2 = g2()
+for x in it1:
+  print(x)
+
+for x in it2:
+  print(x)
+</code></pre></div><p><img src="https://i.imgur.com/P2UdsKP.png" alt=""> <img src="https://i.imgur.com/ee606XA.png" alt=""></p> <h3 id="參考-4"><a href="#參考-4" class="header-anchor">#</a> 參考</h3> <p><a href="https://www.itread01.com/content/1545808988.html" target="_blank" rel="noopener noreferrer">分散式通訊協議-TCP/IP與常用IO方式<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <hr> <h2 id="對公司有甚麼好處？"><a href="#對公司有甚麼好處？" class="header-anchor">#</a> 對公司有甚麼好處？</h2> <p>在我目前待的公司 我有一些case必須要同時測試多台device
+在我們對device provision的時候 有時候有很多需求是要同時provision多台
+或者MQTT再開一個thread來進行test case 我們就可以利用協程來達到同樣的效果
+他會比multi process 或者 thread 更輕便 不耗資源 因為</p> <ul><li>process本質上就是再開一個python 假設你80核心 那其實沒關係XD</li> <li>thread本質上會因為GIL而造成CPU互搶資源</li></ul> <h3 id="同時多台的test-case"><a href="#同時多台的test-case" class="header-anchor">#</a> 同時多台的test case</h3> <p>以某一個專案來說來說
+以前不知道有python可以非同步 就只能採用js的非同步再套到robot上
+其實這造成後續維護上的不便</p> <div class="language- extra-class"><pre class="language-text"><code>for(let i = 0; i &lt; env.DEVICE_COUNT; i++) {
+            provisionPromise[i] = device.sendProvisionAndReturnClient(sn[i].substring(0, 12), deviceToken[i], provisionToken[i]);
+        }
+        deviceClients = await Promise.all(provisionPromise);
+</code></pre></div><h3 id="使用在mqtt上"><a href="#使用在mqtt上" class="header-anchor">#</a> 使用在MQTT上</h3> <p><a href="https://github.com/mossblaser/aiomqtt" target="_blank" rel="noopener noreferrer">aiomqtt<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>以實作了這個功能
+我們也可以開多個MQTT client 來對murano進行publish
+而不是再用multi thread 照成CPU運作的困難</p> <h3 id="參考-5"><a href="#參考-5" class="header-anchor">#</a> 參考</h3> <p><a href="http://ccu-cs-os2009s-495410049.blogspot.com/2009/06/os-process-thread-part-3.html?m=1" target="_blank" rel="noopener noreferrer">GIL是甚麼<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <hr> <h2 id="其他有趣的文章"><a href="#其他有趣的文章" class="header-anchor">#</a> 其他有趣的文章</h2> <h3 id="把node-js-的非同步模快套再python上"><a href="#把node-js-的非同步模快套再python上" class="header-anchor">#</a> 把node js 的非同步模快套再python上</h3> <p>再以上介紹上 可以知道要做到非同步協程
+主要的重點就是要有一個擁有Event loop核心的模快來跟電腦底層的I/O元件分配任務
+所以我們也可以把node js 的libuv模快 套用到python上</p> <h4 id="參考-6"><a href="#參考-6" class="header-anchor">#</a> 參考</h4> <p><a href="https://carlos.aboutmy.info/blog/?p=713" target="_blank" rel="noopener noreferrer">基於 libuv 的 uvloop 令 Python 3.5+ 的 asyncio 更快<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="http://sj82516-blog.logdown.com/posts/3903966/from-libuv-v8-to-nodejs-series-libuv-environment-setting-and-description" target="_blank" rel="noopener noreferrer">[從libuv/v8到nodejs 系列] ：Libuv - 環境建置與說明<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h4 id="線程-進程-是甚麼"><a href="#線程-進程-是甚麼" class="header-anchor">#</a> 線程 進程 是甚麼</h4> <p>可以看看RobinC的文章 寫的更清楚</p> <blockquote><p>引用RobinC：
+process是資源分配的最小單位 你可以把他想成一個工廠
+thread式CPU執行的最小單位 你可以把他想成工人</p></blockquote> <p>CPU密集型（你可以想成很多演算法） &gt;&gt;&gt;
+適合使用multi process 因為各個工廠的資源都是分開的 不會因為爭奪GIL資源而耗費時間
+IO密集型（你可以想成很多requests）&gt;&gt;&gt;
+適合使用multi thread 因為thread把事情交代給request I/O就開始等待 而這些I/O都是分開的 不會搶資源(可以參考上圖) 但是首先條件式你的電腦要式多CPU 可以跑多thread</p> <h4 id="參考-7"><a href="#參考-7" class="header-anchor">#</a> 參考</h4> <p><a href="https://zhuanlan.zhihu.com/p/20953544" target="_blank" rel="noopener noreferrer">谈谈python的GIL、多线程、多进程<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="callback-hell"><a href="#callback-hell" class="header-anchor">#</a> callback hell</h3> <p><img src="https://i.imgur.com/7dpMt31.png" alt=""></p> <p>關鍵 &gt;&gt;&gt; 假設我們的程式碼試想要有序的 即</p> <div class="language- extra-class"><pre class="language-text"><code>x = request1(&quot;hi&quot;)
+y = request2(x)
+z = request3(y)
+</code></pre></div><p>再同步的語言中會等待IO返回 再執行下一行
+可是非同步的語言中IO返回所執行的東西是當初交代給他的callback function
+所以你必須把下一行程式碼包裝好 跟IO說 等等你完成後要執行這個喔
+長這樣</p> <div class="language- extra-class"><pre class="language-text"><code>z = requests1(&quot;hi&quot;, requests2(x, requests3(y)))
+</code></pre></div><p>把他變成波動全就變這樣</p> <div class="language- extra-class"><pre class="language-text"><code>z = requests1(&quot;hi&quot;,
+        requests2(x,
+            requests3(y)
+        )
+    )
+</code></pre></div><hr> <h2 id="其他參考"><a href="#其他參考" class="header-anchor">#</a> 其他參考</h2> <p><a href="https://laike9m.com/blog/huan-zai-yi-huo-bing-fa-he-bing-xing,61/%E8%BF%98%E5%9C%A8%E7%96%91%E6%83%91%E5%B9%B6%E5%8F%91%E5%92%8C%E5%B9%B6%E8%A1%8C%EF%BC%9F" target="_blank" rel="noopener noreferrer">还在疑惑并发和并行？<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://zhuanlan.zhihu.com/p/25228075" target="_blank" rel="noopener noreferrer">从0到1，Python异步编程的演进之路<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://zhuanlan.zhihu.com/p/27258289" target="_blank" rel="noopener noreferrer">Python Async/Await入门指南<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="http://www.jollen.org/blog/2008/08/linux_device_driver_blocking_io.html" target="_blank" rel="noopener noreferrer">Linux 驅動程式的 I/O, #4: 什麼是 Blocking I/O<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div id="disqus_thread"></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/notes/" class="prev router-link-active">
+        小前言
+      </a></span> <span class="next"><a href="/notes/drone 與其他CICD的比較.html">
+        drone 與其他CI/CD的比較
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div id="fb-root"></div></div></div>
+    <script src="/assets/js/app.b651550d.js" defer></script><script src="/assets/js/2.4d3667ca.js" defer></script><script src="/assets/js/19.e142b7d3.js" defer></script><script src="/assets/js/6.861e33a3.js" defer></script><script src="/assets/js/7.8fd2f7c0.js" defer></script>
+  </body>
+</html>
